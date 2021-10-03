@@ -23,12 +23,12 @@ public:
 	// Default Constructor
 	WorkTicket();
 	// parameterized Constructor.
-	WorkTicket(int WorkTicketNumber, std::string client_id, int workTicketDate, std::string issueDescription);
-
+	WorkTicket(int WorkTicketNumber, std::string client_id, int WorkTicketDate, std::string issueDescription);
+	
 
 
 	// Copy Constructor.
-	WorkTicket(const WorkTicket& another_ticket);
+	//WorkTicket(const WorkTicket& another_ticket);
 	//equality operato declaration - overload
 	bool operator==(const WorkTicket another_ticket);
 

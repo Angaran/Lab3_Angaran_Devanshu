@@ -8,12 +8,14 @@ private:
 
 public:
 	/*bool SetIsOpen(bool isOpen);*/
-	virtual ~ExtendedWorkTicket() = default;
+	
 	bool getOpenValue() const;
-
+	void SetIsOpen(bool isOpen);
 	ExtendedWorkTicket();
 
-	ExtendedWorkTicket(const int ticket_number, const std::string & client_id, const int month, const int day, const int year, const std::string & description, bool isOpen);
+
+	ExtendedWorkTicket(const int ticket_number, const std::string& client_id, const int month,
+	                   const int day, const int year, const std::string& description, bool isOpen);
 
 	bool SetWorkTicket(const int ticket_number, const std::string & client_id, const int month, const int day, const int year, const std::string & description, bool isOpen);
 

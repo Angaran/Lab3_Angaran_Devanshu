@@ -34,18 +34,18 @@ WorkTicket::WorkTicket(int WorkTicketNumber, std::string client_id, int workTick
 }
 
 // copy constructor defination
-WorkTicket::WorkTicket(const WorkTicket& another_ticket)
-{
-
-	
-	m_WorkTicketNumber = another_ticket.m_WorkTicketNumber;
-	m_clientID = another_ticket.m_clientID;
-	m_workTicketDay = another_ticket.m_workTicketDay;
-	m_workTicketMonth = another_ticket.m_workTicketMonth;
-	m_workTicketYear = another_ticket.m_workTicketYear;
-	m_issueDescription = another_ticket.m_issueDescription;
-	std::cout << "\n Work Ticket object was copied \n";
-}
+//WorkTicket::WorkTicket(const WorkTicket& another_ticket)
+//{
+//
+//	
+//	m_WorkTicketNumber = another_ticket.m_WorkTicketNumber;
+//	m_clientID = another_ticket.m_clientID;
+//	m_workTicketDay = another_ticket.m_workTicketDay;
+//	m_workTicketMonth = another_ticket.m_workTicketMonth;
+//	m_workTicketYear = another_ticket.m_workTicketYear;
+//	m_issueDescription = another_ticket.m_issueDescription;
+//	std::cout << "\n Work Ticket object was copied \n";
+//}
 
 /* equaity operator defination
  * check iif one object is equal to another
@@ -197,9 +197,10 @@ bool WorkTicket::SetWorkTicket(int WorkTicketNumber, std::string clientID, int w
 			// sets the date (may throw an exception even if rules are met)
 			SetWorkDate(workTicketDay, workTicketMonth, workTicketYear);
 		}
-		catch (...)
+		catch (_exception)
 		{
 			valid = false;
+			std::cout <<  "\nError! Try Again Checking the paramaeters ";
 		}
 	}
 
