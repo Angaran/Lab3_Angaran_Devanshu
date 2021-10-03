@@ -227,7 +227,7 @@ void  WorkTicket::ShowWorkTicket()
 	// printing cout 
 	std::cout << "The work Ticket Number is " <<(GetWorkTicketNumber()) << std::endl << "The client ID is " << m_clientID << std::endl
 		<< "The Work Ticket Date is " << GetWorkTicketDay() << GetWorkTicketMonth() << GetWorkTicketYear() << std::endl << "The issue Description is " << m_issueDescription << std::endl;
-
+	
 
 }
 

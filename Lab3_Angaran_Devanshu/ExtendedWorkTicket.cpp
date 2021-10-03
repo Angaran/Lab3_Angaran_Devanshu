@@ -106,20 +106,35 @@ void ExtendedWorkTicket::ShowWorkTicket()
 
 	if(getOpenValue() == 1)
 	{
-		std::cout << "The Ticket Is " << getOpenValue() << ": True";
+		std::cout << "The Ticket Is " << getOpenValue() << ": OPEN";
 	}
 	else
 	{
-		std::cout << "The Ticket Is " <<  getOpenValue() << ": False";
+		std::cout << "The Ticket Is " <<  getOpenValue() << ": CLOSED";
 	}
 
 	/*std::cout << "The Ticket is " << getOpenValue() << "/n";*/
 }
 
+
+
 std::ostream& operator<<(std::ostream& out, const ExtendedWorkTicket& ticket)
 {
+	
+	
 	out << (WorkTicket)ticket;
-	//out << "Ticket is ";
+	ticket.getOpenValue();
 
+	//out << "Ticket is ";
+	/*ExtendedWorkTicket temp;*/
+	if (ticket.getOpenValue() == true)
+	{
+		out << "Ticket"  << ": OPEN";
+	}
+	else
+	{
+		std::cout << "The Ticket" << ": CLOSED";
+	}
+	
 	return  out;
 }

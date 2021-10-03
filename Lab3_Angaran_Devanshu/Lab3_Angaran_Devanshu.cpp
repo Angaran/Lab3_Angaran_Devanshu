@@ -17,12 +17,19 @@ int main()
 		std::cout << "\nErrors! No changes to the ticket made." << std::endl;
 
 	std::cout << std::endl << "Ticket 1: " << testTicket1 << std::endl;
-	if (!testTicket2.SetWorkTicket(1, "BLAGO-042", 3, 2, 2011, "User cannot locate \'any\' key.", false))
+	if (!testTicket2.SetWorkTicket(1, "BLAGO-042", 3, 2, 2011, "User cannot locate \'any\' key.", true))
 		std::cout << "\nErrors! No changes to the ticket made." << std::endl;
 
 	std::cout << std::endl << "Ticket 1: " << testTicket1 << std::endl;
 
 	std::cout << std::endl << "Ticket 2: " << testTicket2 << std::endl;
 
+	testTicket2.CloseTicket();
+
+	std::cout << std::endl << "After Ticket 2 closed: " << testTicket2 << std::endl;
+
+	std::cout << std::endl << std::endl;
+	return 0;
 }
+
 
