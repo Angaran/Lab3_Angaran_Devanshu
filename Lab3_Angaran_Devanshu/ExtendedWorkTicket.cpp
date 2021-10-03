@@ -33,33 +33,9 @@ bool ExtendedWorkTicket::SetWorkTicket(const int ticket_number, const std::strin
 	WorkTicket ticket12;
 
 	ticket12.SetWorkTicket(ticket_number, client_id, month, day, year, description);
-	bool valid = true;
-	// check numeric parameters
-	if (ticket_number < 0 || year < 2000 || year > 2099)
-		valid = false;
-	// check string parameters     
-	else if (client_id.length() < 1 || description.length() < 1)
-		valid = false;
-	else
-	{
-		try
-		{
-			//	 sets the date (may throw an exception even if rules are met)
-			ticket12.SetWorkTicketNumber(ticket_number);
-				//ticket12.SetDate(day, month, year);
-			ticket12.SetClientID(client_id);
-			ticket12.SetIssueDescription(description);
-			//ticket12.SetClientId(client_id);
-				//ticket12.SetDescription(description);
+	isOpen = true;
 
-		}
-		catch (std::exception)
-		{
-			valid = false;
-		}
-
-	}
-	return  valid;
+	return  true;
 }
 
 void ExtendedWorkTicket::CloseTicket()

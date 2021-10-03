@@ -4,6 +4,7 @@
 #define __WORKTICKET__
 #include <string>
 
+
 class WorkTicket
 {
 private:
@@ -15,6 +16,7 @@ private:
 	int m_workTicketDay;
 	int m_workTicketMonth;
 	int m_workTicketYear;
+	int myDate;
 	std::string m_issueDescription;
 public:
 
@@ -37,6 +39,7 @@ public:
 	// setter for client ID attribute.
 	void SetClientID(const std::string& client_id);
 	// setter for workTicketDate Attribute.
+	void SetWorkDate(int workTicketDay, int WorkTicketMonth, int workTicketYear);
 	void SetWorkTicketDay(int workTicketDay);
 	void SetWorkTicketMonth(int workTicketMonth);
 	void SetWorkTicketYear(int workTicketYear);
@@ -48,6 +51,8 @@ public:
 	int GetWorkTicketNumber();
 	//getter for client id
 	std::string GetClientID();
+
+	void GetWorkTicketDate();
 	//getter for workTicketDafte
 	int GetWorkTicketDay();
 	int GetWorkTicketMonth();
@@ -62,12 +67,12 @@ public:
 	std::string ToString() const;
 
 	// Mutator method to set all the attributes -- SetWorkTicket();
-	void SetWorkTicket(int WorkTicketNumber, std::string clientID, int workTicketDay, int workTicketMonth,
+	bool SetWorkTicket(int WorkTicketNumber, std::string clientID, int workTicketDay, int workTicketMonth,
 	                         int workTicketYear, std::string
 	                         issueDescription);
 	//Mutator method to show all attributes -- ShowWorkTicket();
 	virtual void ShowWorkTicket();
-
+	
 };
 
 #endif
