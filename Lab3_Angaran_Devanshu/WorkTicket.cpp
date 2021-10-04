@@ -1,7 +1,7 @@
 // including files
 #include "WorkTicket.h"
 
-
+// including iostream,string.
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -22,30 +22,32 @@ WorkTicket::WorkTicket()
 
 
 // parametirized constructor
-WorkTicket::WorkTicket(int WorkTicketNumber, std::string client_id, int workTicketDate, std::string issueDescription)
+WorkTicket::WorkTicket(int WorkTicketNumber, std::string client_id, int day, int month , int year, std::string issueDescription)
 {
 
 	// initialization
 	m_WorkTicketNumber = WorkTicketNumber;
 	m_clientID = client_id;
-	m_workTicketDate = workTicketDate;
+	SetWorkTicketDay(day);
+	SetWorkTicketMonth(month);
+	SetWorkTicketYear(year);
 	m_issueDescription = issueDescription;
 	SetWorkTicketNumber(WorkTicketNumber);
 }
 
 // copy constructor defination
-//WorkTicket::WorkTicket(const WorkTicket& another_ticket)
-//{
-//
-//	
-//	m_WorkTicketNumber = another_ticket.m_WorkTicketNumber;
-//	m_clientID = another_ticket.m_clientID;
-//	m_workTicketDay = another_ticket.m_workTicketDay;
-//	m_workTicketMonth = another_ticket.m_workTicketMonth;
-//	m_workTicketYear = another_ticket.m_workTicketYear;
-//	m_issueDescription = another_ticket.m_issueDescription;
-//	std::cout << "\n Work Ticket object was copied \n";
-//}
+WorkTicket::WorkTicket(const WorkTicket& another_ticket)
+{
+
+	
+	m_WorkTicketNumber = another_ticket.m_WorkTicketNumber;
+	m_clientID = another_ticket.m_clientID;
+	m_workTicketDay = another_ticket.m_workTicketDay;
+	m_workTicketMonth = another_ticket.m_workTicketMonth;
+	m_workTicketYear = another_ticket.m_workTicketYear;
+	m_issueDescription = another_ticket.m_issueDescription;
+	
+}
 
 /* equaity operator defination
  * check iif one object is equal to another
@@ -225,8 +227,9 @@ void  WorkTicket::ShowWorkTicket()
 {
 
 	// printing cout 
-	std::cout << "The work Ticket Number is " <<(GetWorkTicketNumber()) << std::endl << "The client ID is " << m_clientID << std::endl
-		<< "The Work Ticket Date is " << GetWorkTicketDay() << GetWorkTicketMonth() << GetWorkTicketYear() << std::endl << "The issue Description is " << m_issueDescription << std::endl;
+	std::cout << "\n\nThe work Ticket Number is :  " <<(GetWorkTicketNumber()) << std::endl << "The client ID is " << m_clientID << std::endl
+	<< "The work Ticket Number is " << GetWorkTicketDay() << "/" << GetWorkTicketMonth() << "/" << GetWorkTicketYear() << std::endl <<
+ 	"The issue Description is " << m_issueDescription << std::endl;
 	
 
 }
@@ -238,180 +241,180 @@ std::ostream& operator<<(std::ostream& out, const WorkTicket& ticket_info)
 	return  out;
 }
 
-//// istream operator overload defination
-//std::istream& operator>>(std::istream& in, WorkTicket& ticket_info)
-//{
-//	//Ask the user to enter the work ticket number
-//	std::cout << "\nEnter the Work Ticket Number." << std::endl;
-//	// input
-//	std::cin >> ticket_info.m_WorkTicketNumber;
-//	// if input is failed then enter the while loop with non numeric number
-//	while(std::cin.fail())
-//	{
-//		// error message
-//		std::cout << "Try Again to enter an numeric number. " << std::endl;
-//		std::cin.clear();
-//		std::cin.sync();
-//		std::cin.ignore(100,'\n');
-//		std::cin >> ticket_info.m_WorkTicketNumber;
-//		
-//	}
-//	//output to the user enter your work ticket date
-//	std::cout << "\nEnter your work ticket date (DAY:MONTH:YEAR)" << std::endl;
-//	//output to the user enter the day
-//	std::cout << "Enter the Day: " << std::endl;
-//
-//	//in >> ticket_info.m_workTicketDay;
-//	int  input = 1;
-//	//if input is not equal to 0 then enter loop
-//	while (!(input ==0))
-//	{
-//		/*input = 0;*/
-//		//std::cin.clear();
-//		//std::cin.ignore();
-//		in >> ticket_info.m_workTicketDay;
-//		//if the user input fails the enter this statement
-//		if(std::cin.fail())
-//		{
-//			//The day must be a numeric number Try again 
-//			std::cout << "The Day must be an numeric Number:  Try Again: ";
-//			std::cin.clear();
-//			std::cin.ignore(100,'\n');
-//
-//		}
-//		//else if the day is less than 1 and greater than 31 then enter this statement
-//		else if(ticket_info.m_workTicketDay < 1 || ticket_info.m_workTicketDay >31)
-//		{
-//			//output the day must be between 1 and 31 please try again
-//			std::cout << "Day must be between 1 or 31. Please Try Again.: ";
-//			std::cin.clear();
-//			std::cin.ignore(100,'\n');
-//			input = 1;
-//
-//
-//		}
-//		//else output to the user that the input is correct
-//		else
-//		{
-//
-//			std::cout << "Correct " << std::endl;
-//			input = 0;
-//
-//		}
-//		
-//	}
-//	//Ask the user to enter the month 
-//	std::cout << "\nEnter the Month. " << std::endl;
-//	input = 1;
-//	//if input is not equal to 0 then enter the loop
-//	while(!(input == 0))
-//	{
-//		// input
-//		in >> ticket_info.m_workTicketMonth;
-//		//  if user enters the non numeric value
-//		if(std::cin.fail())
-//		{
-//			// error message
-//			std::cout << " The Entered  Month must be numeric.  Please Try Again. ";
-//			// clear and ignore input stream
-//			std::cin.clear();
-//			std::cin.ignore(100,'\n');
-//		}
-//		// validating range
-//		else if( ticket_info.m_workTicketMonth < 1 || ticket_info.m_workTicketMonth > 12 )
-//		{
-//			std::cout << "Month Should be between 1 and 12. Please Try again: ";
-//			std::cin.clear();
-//			std::cin.ignore(100,'\n');
-//
-//		}
-//		// correct input
-//		else
-//		{;
-//			input = 0;
-//		}
-//	}
-//	//Ask the user to enter a year input
-//	std::cout << "\nEnter the Year " << std::endl;
-//	input = 1;
-//	//if inpht is not equal to 0 then enterloop
-//	while(!(input == 0))
-//	{
-//
-//		in >> ticket_info.m_workTicketYear;
-//		//if input fails output the entered year should enter non numeric statement
-//		// if user enters the non numeric value
-//		if(std::cin.fail())
-//		{
-//			// errr message
-//			std::cout << " The Entered Year should be a numeric. " << std::endl;
-//			std::cin.clear();
-//			std::cin.ignore(100,'\n');
-//
-//		}
-//		// range validation
-//		else if (ticket_info.m_workTicketYear < 2000 || ticket_info.m_workTicketYear > 2099)
-//		{
-//			// erro message
-//			std::cout << "Year Should be between 2000 and 2099";
-//			std::cin.clear();
-//			std::cin.ignore(100,'\n');
-//		}
-//		// correct input
-//		else
-//		{
-//			input = 0;
-//			std::cin.clear();
-//			std::cin.ignore();
-//			
-//		}
-//	}
-//	//Ask user for for the client ID
-//	std::cout << "\nEnter the Client ID." << std::endl;
-//	input = 1;
-//	//Enter the loop if the input variable is not eqaul to 0
-//	while (!(input == 0))
-//	{
-//		//in >> ticket_info.m_clientID;
-//		std::getline(std::cin, ticket_info.m_clientID);
-//		//if the client id length is less than one or the client id is empty
-//		if (ticket_info.m_clientID.length() == 0 || ticket_info.m_clientID.empty())
-//		{
-//			//Output the client ID must be at least one character long
-//			std::cout << "The client ID must be atleast one character long ";
-//			std::cin.clear();
-//			//std::cin.ignore(100,'\n');
-//		}
-//		// correct input
-//		else
-//		{
-//			input = 0;
-//			//std::cin.ignore(100,'\n');
-//		}
-//	}
-//
-//	// asking to enter for issue description
-//	std::cout << "\nEnter the Issue Description." << std::endl;
-//	input = 1;
-//	// while loop for validation
-//	while (!(input == 0))
-//	{
-//		// input
-//		std::getline(std::cin, ticket_info.m_issueDescription );
-//		//checking for validation if user enters less than 1 char means 0 
-//		if (ticket_info.m_issueDescription.length() == 0 || ticket_info.m_issueDescription.empty())
-//		{
-//			std::cout << "The issue Description must not be less than one character or empty. Try Again. :- ";
-//			std::cin.clear();
-//			std::cin.sync();
-//		}
-//		// correct input
-//		else
-//		{
-//			input = 0;
-//		}
-//	}
-//
-//	// return in
-//	return in;
-//}
+// istream operator overload defination
+std::istream& operator>>(std::istream& in, WorkTicket& ticket_info)
+{
+	//Ask the user to enter the work ticket number
+	std::cout << "\nEnter the Work Ticket Number." << std::endl;
+	// input
+	std::cin >> ticket_info.m_WorkTicketNumber;
+	// if input is failed then enter the while loop with non numeric number
+	while(std::cin.fail())
+	{
+		// error message
+		std::cout << "Try Again to enter an numeric number. " << std::endl;
+		std::cin.clear();
+		std::cin.sync();
+		std::cin.ignore(100,'\n');
+		std::cin >> ticket_info.m_WorkTicketNumber;
+		
+	}
+	//output to the user enter your work ticket date
+	std::cout << "\nEnter your work ticket date (DAY:MONTH:YEAR)" << std::endl;
+	//output to the user enter the day
+	std::cout << "Enter the Day: " << std::endl;
+
+	//in >> ticket_info.m_workTicketDay;
+	int  input = 1;
+	//if input is not equal to 0 then enter loop
+	while (!(input ==0))
+	{
+		/*input = 0;*/
+		//std::cin.clear();
+		//std::cin.ignore();
+		in >> ticket_info.m_workTicketDay;
+		//if the user input fails the enter this statement
+		if(std::cin.fail())
+		{
+			//The day must be a numeric number Try again 
+			std::cout << "The Day must be an numeric Number:  Try Again: ";
+			std::cin.clear();
+			std::cin.ignore(100,'\n');
+
+		}
+		//else if the day is less than 1 and greater than 31 then enter this statement
+		else if(ticket_info.m_workTicketDay < 1 || ticket_info.m_workTicketDay >31)
+		{
+			//output the day must be between 1 and 31 please try again
+			std::cout << "Day must be between 1 or 31. Please Try Again.: ";
+			std::cin.clear();
+			std::cin.ignore(100,'\n');
+			input = 1;
+
+
+		}
+		//else output to the user that the input is correct
+		else
+		{
+
+			std::cout << "Correct " << std::endl;
+			input = 0;
+
+		}
+		
+	}
+	//Ask the user to enter the month 
+	std::cout << "\nEnter the Month. " << std::endl;
+	input = 1;
+	//if input is not equal to 0 then enter the loop
+	while(!(input == 0))
+	{
+		// input
+		in >> ticket_info.m_workTicketMonth;
+		//  if user enters the non numeric value
+		if(std::cin.fail())
+		{
+			// error message
+			std::cout << " The Entered  Month must be numeric.  Please Try Again. ";
+			// clear and ignore input stream
+			std::cin.clear();
+			std::cin.ignore(100,'\n');
+		}
+		// validating range
+		else if( ticket_info.m_workTicketMonth < 1 || ticket_info.m_workTicketMonth > 12 )
+		{
+			std::cout << "Month Should be between 1 and 12. Please Try again: ";
+			std::cin.clear();
+			std::cin.ignore(100,'\n');
+
+		}
+		// correct input
+		else
+		{;
+			input = 0;
+		}
+	}
+	//Ask the user to enter a year input
+	std::cout << "\nEnter the Year " << std::endl;
+	input = 1;
+	//if inpht is not equal to 0 then enterloop
+	while(!(input == 0))
+	{
+
+		in >> ticket_info.m_workTicketYear;
+		//if input fails output the entered year should enter non numeric statement
+		// if user enters the non numeric value
+		if(std::cin.fail())
+		{
+			// errr message
+			std::cout << " The Entered Year should be a numeric. " << std::endl;
+			std::cin.clear();
+			std::cin.ignore(100,'\n');
+
+		}
+		// range validation
+		else if (ticket_info.m_workTicketYear < 2000 || ticket_info.m_workTicketYear > 2099)
+		{
+			// erro message
+			std::cout << "Year Should be between 2000 and 2099";
+			std::cin.clear();
+			std::cin.ignore(100,'\n');
+		}
+		// correct input
+		else
+		{
+			input = 0;
+			std::cin.clear();
+			std::cin.ignore();
+			
+		}
+	}
+	//Ask user for for the client ID
+	std::cout << "\nEnter the Client ID." << std::endl;
+	input = 1;
+	//Enter the loop if the input variable is not eqaul to 0
+	while (!(input == 0))
+	{
+		//in >> ticket_info.m_clientID;
+		std::getline(std::cin, ticket_info.m_clientID);
+		//if the client id length is less than one or the client id is empty
+		if (ticket_info.m_clientID.length() == 0 || ticket_info.m_clientID.empty())
+		{
+			//Output the client ID must be at least one character long
+			std::cout << "The client ID must be atleast one character long ";
+			std::cin.clear();
+			//std::cin.ignore(100,'\n');
+		}
+		// correct input
+		else
+		{
+			input = 0;
+			//std::cin.ignore(100,'\n');
+		}
+	}
+
+	// asking to enter for issue description
+	std::cout << "\nEnter the Issue Description." << std::endl;
+	input = 1;
+	// while loop for validation
+	while (!(input == 0))
+	{
+		// input
+		std::getline(std::cin, ticket_info.m_issueDescription );
+		//checking for validation if user enters less than 1 char means 0 
+		if (ticket_info.m_issueDescription.length() == 0 || ticket_info.m_issueDescription.empty())
+		{
+			std::cout << "The issue Description must not be less than one character or empty. Try Again. :- ";
+			std::cin.clear();
+			std::cin.sync();
+		}
+		// correct input
+		else
+		{
+			input = 0;
+		}
+	}
+
+	// return in
+	return in;
+}

@@ -2,9 +2,10 @@
 
 #ifndef __WORKTICKET__
 #define __WORKTICKET__
+//include string 
 #include <string>
 
-
+// base class
 class WorkTicket
 {
 private:
@@ -23,12 +24,12 @@ public:
 	// Default Constructor
 	WorkTicket();
 	// parameterized Constructor.
-	WorkTicket(int WorkTicketNumber, std::string client_id, int WorkTicketDate, std::string issueDescription);
+	WorkTicket(int WorkTicketNumber, std::string client_id, int day,int month, int year, std::string issueDescription);
 	
 
 
 	// Copy Constructor.
-	//WorkTicket(const WorkTicket& another_ticket);
+	WorkTicket(const WorkTicket& another_ticket);
 	//equality operato declaration - overload
 	bool operator==(const WorkTicket another_ticket);
 

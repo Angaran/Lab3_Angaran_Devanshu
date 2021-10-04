@@ -1,15 +1,19 @@
+// Inherited class  ExtendedWorkTicket from the base class WorkTicekt.
 #pragma once
 #include "WorkTicket.h"
+// inherteD class
 class ExtendedWorkTicket :
     public WorkTicket
 {
+// private members
 private:
+	// m_isOpen with a bool has been declared here 
 	bool m_isOpen;
-
+// public members
 public:
-	/*bool SetIsOpen(bool isOpen);*/
 	
-	bool getOpenValue() const;
+	// declaration of the accessor IsOpen.
+	bool getIsOpen() const;
 	void SetIsOpen(bool isOpen);
 	ExtendedWorkTicket();
 
